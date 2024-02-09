@@ -7,10 +7,13 @@ public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the game number and press Enter.");
-        System.out.print("1 - Greet\n" + "2 - Even\n" + "0 - Exit\n" + "Your choice: ");
+        System.out.print("1 - Greet\n" + "2 - Even\n" + "3 - Calc\n" + "0 - Exit\n" + "Your choice: ");
         int game = scanner.nextInt();
         scanner.nextLine();
         switch (game) {
+            case 3:
+                Cli.Calculator(scanner);
+                break;
             case 2:
                 Cli.Even(scanner);
                 break;

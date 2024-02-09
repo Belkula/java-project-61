@@ -35,4 +35,43 @@ public class Cli {
         }
         System.out.println("Congratulations, " + name + "!");
     }
-}
+
+        public static void Calculator (Scanner scanner) {
+            Random random = new Random();
+            String name = username(scanner);
+            char[] operators = {'+', '-'};
+            System.out.println("What is the result of the expression?");
+            int correctAnswersCount = 0;
+            while (correctAnswersCount < 3) {
+                int num1 = random.nextInt(100) + 1;
+                int num2 = random.nextInt(100) + 1;
+                char operator = operators[random.nextInt(2)];
+                String question = num1 + " " + operator + " " + num2;
+                int correctAnswer;
+                switch (operator) {
+                    case '+':
+                        correctAnswer = num1 + num2;
+                        break;
+                    case '-':
+                        correctAnswer = num1 - num2;
+                        break;
+                    default:
+                        correctAnswer = num1 + num2;
+                }
+                System.out.println("Question: " + question);
+                System.out.print("Your answer: ");
+                int userAnswer = scanner.nextInt();
+
+                if (userAnswer == correctAnswer) {
+                    System.out.println("Correct!");
+                    correctAnswersCount++;
+                } else {
+                    System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
+                    System.out.println("Let's try again, " + name + "!");
+                    return;
+                }
+                scanner.nextLine(); // consume newline character
+            }
+            System.out.println("Congratulations, " + name + "!");
+        }
+    }
