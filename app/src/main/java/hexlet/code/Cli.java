@@ -108,4 +108,38 @@ public class Cli {
         }
         System.out.println("Congratulations, " + name + "!");
     }
+
+    public static void Progression(Scanner scanner) {
+        Random random = new Random();
+        String name = username(scanner);
+        System.out.println("What number is missing in the progression?");
+        int correctAnswersCount = 0;
+        while (correctAnswersCount < 3) {
+            int progressionLength = random.nextInt(6) + 5;
+            int hidden = random.nextInt(progressionLength);
+            int firstNumber = random.nextInt(100);
+            int step = random.nextInt(10) + 1;
+            System.out.print("Question: ");
+            for (int i = 0; i < progressionLength; i++) {
+                if (i == hidden) {
+                    System.out.print(".. ");
+                } else {
+                    System.out.print(firstNumber + step * i + " ");
+                }
+            }
+            System.out.println();
+
+            System.out.print("Your answer: ");
+            int userAnswer = scanner.nextInt();
+            if (userAnswer == firstNumber + step * hidden) {
+                System.out.println("Correct!");
+                correctAnswersCount++;
+            } else {
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + (firstNumber + step * hidden) + "'.");
+                System.out.println("Let's try again, " + name + "!");
+                return;
+            }
+        }
+        System.out.println("Congratulations, " + name + "!");
+    }
     }
