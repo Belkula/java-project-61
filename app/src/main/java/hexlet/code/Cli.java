@@ -70,8 +70,42 @@ public class Cli {
                     System.out.println("Let's try again, " + name + "!");
                     return;
                 }
-                scanner.nextLine(); // consume newline character
+                scanner.nextLine();
             }
             System.out.println("Congratulations, " + name + "!");
         }
+
+    public static void GDD (Scanner scanner) {
+        Random random = new Random();
+        String name = username(scanner);
+        char[] operators = {'+', '-'};
+        System.out.println("Find the greatest common divisor of given numbers.");
+        int correctAnswersCount = 0;
+        while (correctAnswersCount < 3) {
+            int num1 = random.nextInt(100) + 1;
+            int num2 = random.nextInt(100) + 1;
+            String question = num1 + " " + num2;
+            int temp = 0;
+            while (num2 != 0) {
+                temp = num2;
+                num2 = num1 % num2;
+                num1 = temp;
+            }
+            int correctAnswer = temp;
+            System.out.println("Question: " + question);
+            System.out.print("Your answer: ");
+            int userAnswer = scanner.nextInt();
+
+            if (userAnswer == correctAnswer) {
+                System.out.println("Correct!");
+                correctAnswersCount++;
+            } else {
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
+                System.out.println("Let's try again, " + name + "!");
+                return;
+            }
+            scanner.nextLine();
+        }
+        System.out.println("Congratulations, " + name + "!");
+    }
     }
