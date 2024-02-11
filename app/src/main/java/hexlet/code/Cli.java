@@ -24,7 +24,7 @@ public class Cli {
             System.out.print("Your answer: ");
             String answer = scanner.nextLine();
             String correctAnswer = (number % 2 == 0) ? "yes" : "no";
-            if (!answer.equals(correctAnswer)) {
+            if (!answer.equalsIgnoreCase(correctAnswer)) {
                 System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
                 System.out.println("Let's try again, " + name + "!");
                 return;
@@ -138,6 +138,41 @@ public class Cli {
                 System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + (firstNumber + step * hidden) + "'.");
                 System.out.println("Let's try again, " + name + "!");
                 return;
+            }
+        }
+        System.out.println("Congratulations, " + name + "!");
+    }
+
+    public static void Prime (Scanner scanner){
+        Random random = new Random();
+        String name = username(scanner);
+        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+
+        int correctAnswersCount = 0;
+        while (correctAnswersCount < 3) {
+            int number = random.nextInt(100) + 1;
+            System.out.println("Question: " + number);
+            System.out.print("Your answer: ");
+            String answer = scanner.nextLine();
+            String correctAnswer = "no";
+            if (number <= 1) {
+                correctAnswer = "yes";
+            }
+            for (int i = 2; i < number; i++) {
+                if (number % i == 0) {
+                    correctAnswer = "no";
+                    break;
+                }else{
+                    correctAnswer = "yes";
+                }
+            }
+            if (!answer.equalsIgnoreCase(correctAnswer)) {
+                System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
+                System.out.println("Let's try again, " + name + "!");
+                return;
+            } else {
+                System.out.println("Correct!");
+                correctAnswersCount++;
             }
         }
         System.out.println("Congratulations, " + name + "!");
