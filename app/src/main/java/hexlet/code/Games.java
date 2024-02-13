@@ -8,26 +8,7 @@ public class Games {
         int correctAnswersCount = 0;
         Random random = new Random();
         while (correctAnswersCount < 3) {
-            switch (game) {
-                case 2:
-                    correctAnswer = even(random);
-                    break;
-                case 3:
-                    correctAnswer = calculator(random);
-                    break;
-                case 4:
-                    correctAnswer = gcd(random);
-                    break;
-                case 5:
-                    correctAnswer = progression(random);
-                    break;
-                case 6:
-                    correctAnswer = prime(random);
-                    break;
-                default:
-                    correctAnswer = "No";
-                    break;
-            }
+            correctAnswer = selector(game, random);
             System.out.print("Your answer: ");
             String answer = scanner.next();
             if (answer.equalsIgnoreCase(correctAnswer)) {
@@ -38,6 +19,24 @@ public class Games {
                 System.out.println("Let's try again, " + name + "!");
                 return;
             }
+        }
+        System.out.println("Congratulations, " + name + "!");
+    }
+
+    private static String selector(int game, Random random) {
+        switch (game) {
+            case 2:
+                return even(random);
+            case 3:
+                return calculator(random);
+            case 4:
+                return gcd(random);
+            case 5:
+                return progression(random);
+            case 6:
+                return prime(random);
+            default:
+                return "no";
         }
     }
 
@@ -108,7 +107,7 @@ public class Games {
         if (number <= 1) {
             result = "yes";
         } else {
-            for (int i = 2; i <= number; i++) {
+            for (int i = 2; i <= Math.sqrt(number); i++) {
                 if (number % i == 0) {
                     result = "no";
                     break;
