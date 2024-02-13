@@ -2,19 +2,21 @@ package hexlet.code;
 import java.util.Random;
 import java.util.Scanner;
 public class Games {
-    private static final int range = 100;
-    private static final  int evem = 2;
-    private static final int calc = 3;
-    private static final int gcd = 4;
-    private static final int progression = 5;
-    private static final  int prime = 6;
+    private static final int RANGE = 100;
+    private static final  int EVEN = 2;
+    private static final int CALC = 3;
+    private static final int GCD = 4;
+    private static final int PROGRESSION = 5;
+    private static final  int PRIME = 6;
+    private static final int MINRND = 6;
+    private static final int MAXRNF = 5;
+    private static final  int STEPS = 3;
     public static void launcher(Scanner scanner, int game) {
         String name = Cli.username(scanner);
         String correctAnswer;
-        int steps = 3;
         int correctAnswersCount = 0;
         Random random = new Random();
-        while (correctAnswersCount < steps) {
+        while (correctAnswersCount < STEPS) {
             correctAnswer = selector(game, random);
             System.out.print("Your answer: ");
             String answer = scanner.next();
@@ -32,15 +34,15 @@ public class Games {
 
     private static String selector(int game, Random random) {
         switch (game) {
-            case evem:
+            case EVEN:
                 return even(random);
-            case calc:
+            case CALC:
                 return calculator(random);
-            case gcd:
+            case GCD:
                 return gcd(random);
-            case progression:
+            case PROGRESSION:
                 return progression(random);
-            case prime:
+            case PRIME:
                 return prime(random);
             default:
                 return "no";
@@ -49,14 +51,14 @@ public class Games {
 
     public static String even(Random random) {
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        int number = random.nextInt(range) + 1;
+        int number = random.nextInt(RANGE) + 1;
         System.out.println("Question: " + number);
         return (number % 2 == 0) ? "yes" : "no";
     }
 
     public static String calculator(Random random) {
-        int num1 = random.nextInt(range) + 1;
-        int num2 = random.nextInt(range) + 1;
+        int num1 = random.nextInt(RANGE) + 1;
+        int num2 = random.nextInt(RANGE) + 1;
         String result;
         String question;
         boolean operator = random.nextBoolean();
@@ -74,26 +76,24 @@ public class Games {
 
     public static String gcd(Random random) {
         System.out.println("Find the greatest common divisor of given numbers.");
-        int num1 = random.nextInt(range) + 1;
-        int num2 = random.nextInt(range) + 1;
-        int gcd;
+        int num1 = random.nextInt(RANGE) + 1;
+        int num2 = random.nextInt(RANGE) + 1;
+        int tmp;
         String question =  num1 + " " + num2;
         while (num2 != 0) {
-            gcd = num2;
+            tmp = num2;
             num2 = num1 % num2;
-            num1 = gcd;
+            num1 = tmp;
         }
         System.out.println("Question: " + question);
         return String.valueOf(num1);
     }
 
     public static String progression(Random random) {
-        int minrnd = 6;
-        int maxrnd = 5;
         System.out.println("What number is missing in the progression?");
-        int firstNumber = random.nextInt(range);
-        int step = random.nextInt(range) + 1;
-        int numbers = random.nextInt(minrnd) + maxrnd;
+        int firstNumber = random.nextInt(RANGE);
+        int step = random.nextInt(RANGE) + 1;
+        int numbers = random.nextInt(MINRND) + MAXRNF;
         int hiddenIndex = random.nextInt(numbers);
         String result = String.valueOf(firstNumber + hiddenIndex * step);
         String question = "";
@@ -109,7 +109,7 @@ public class Games {
     }
 
     public static String prime(Random random) {
-        int number = random.nextInt(range) + 1;
+        int number = random.nextInt(RANGE) + 1;
         String result = "no";
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
         System.out.println("Question: " + number);
