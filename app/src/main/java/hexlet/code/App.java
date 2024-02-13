@@ -7,30 +7,28 @@ public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the game number and press Enter.");
-        System.out.print("1 - Greet\n" + "2 - Even\n" + "3 - Calc\n"  + "4 - GCD\n" + "5 - Progression\n" + "6 - Prime\n" + "0 - Exit\n" + "Your choice: ");
+        System.out.print("1 - Greet\n"
+                + "2 - Even\n"
+                + "3 - Calc\n"
+                + "4 - GCD\n"
+                + "5 - Progression\n"
+                + "6 - Prime\n"
+                + "0 - Exit\n"
+                + "Your choice: ");
         int game = scanner.nextInt();
         scanner.nextLine();
         switch (game) {
             case 6:
-                Cli.Prime(scanner);
-                break;
             case 5:
-                Cli.Progression(scanner);
-                break;
             case 4:
-                Cli.GDD(scanner);
-                break;
             case 3:
-                Cli.Calculator(scanner);
-                break;
             case 2:
-                Cli.Even(scanner);
+                Game.launcher(scanner, game);
                 break;
             case 1:
                 Cli.username(scanner);
-            break;
+                break;
             case 0:
-            break;
             default:
                 break;
         }
