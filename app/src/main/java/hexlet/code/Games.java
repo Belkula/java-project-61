@@ -104,16 +104,21 @@ public class Games {
         String result = "no";
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
         System.out.println("Question: " + number);
-        if (number <= 1) {
+        if (primecheck(number)) {
             result = "yes";
-        } else {
-            for (int i = 2; i <= Math.sqrt(number); i++) {
-                if (number % i == 0) {
-                    result = "no";
-                    break;
-                }
-            }
         }
         return result;
+    }
+
+    public static boolean primecheck(int number) {
+        if (number <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
