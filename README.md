@@ -1,5 +1,7 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Belkula/java-project-61/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Belkula/java-project-61/actions)
+[![Maintainability](https://api.codeclimate.com/v1/badges/5fac4213710935fe2eb6/maintainability)](https://codeclimate.com/github/Belkula/java-project-61/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/5fac4213710935fe2eb6/test_coverage)](https://codeclimate.com/github/Belkula/java-project-61/test_coverage)
 
 [![asciicast](https://asciinema.org/a/1KG2K5LtBr5oYSNhUOTefsS1r.svg)](https://asciinema.org/a/1KG2K5LtBr5oYSNhUOTefsS1r)
 
